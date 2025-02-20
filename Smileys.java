@@ -4,6 +4,12 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**Smiley Project
+ *@author Ronard Nyongkah
+ *@version Spring 2025
+ *CSci1130
+*/
+
 public class Smileys extends JFrame {
     double dNum1, dNum2;
     int iNum;
@@ -33,7 +39,8 @@ public class Smileys extends JFrame {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
             RenderingHints.VALUE_ANTIALIAS_ON);
         
-
+        // The first line on 37 sets the variables and line 38 uses those variables to create our new smiley face
+        // The same this is repeated for each smiley face
         initializeVariables(getWidth() , getHeight(), (int)(getWidth() * .1), (int)(getWidth() * .4));
         drawSmileyFace(x, y, size, g2d, makeRandomColor() );
 
@@ -53,29 +60,20 @@ public class Smileys extends JFrame {
         drawSmileyFace(x, y, size, g2d, makeRandomColor() );
     }
 
-    public void drawSmileyFaces(int locx, int locy){
-
-    }
-
-    // public static int randomXGenerator(int min, int max){
-    //     int rand = (int)(Math.random() * (max - min + 1) + min);
-    //     return rand;
-
-    // }
-
-    public void drawSmileyFace(int x, int y, int size, Graphics g, Color color)
+  
+    // This method is used to create each face
+    public void drawSmileyFace(int locX, int locY, int size, Graphics g, Color color)
     {
         g.setColor(color);
-        System.out.println("X: "+x+" Y: "+ y+" Size: "+ size);
-        g.fillOval(x, y, size, size);
-        //I am using the x, y , h, and w and setting them
-        // relative to theoriginal values.
+        System.out.println("X: "+locX+" Y: "+ locY+" Size: "+ size);
+        g.fillOval(locX, locY, size, size);
+       
         g.setColor(makeRandomColor());
-        g.fillOval((int)(x + size * .15), (int)(y + size * .25),(int)(size - size*.80), (int)(size - size*.80));
+        g.fillOval((int)(locX + size * .15), (int)(locY + size * .25),(int)(size - size*.80), (int)(size - size*.80));
 
-        g.fillOval((int)(x + size * .67), (int)(y + size * .25),(int)(size - size*.80), (int)(size - size*.80));
+        g.fillOval((int)(locX + size * .67), (int)(locY + size * .25),(int)(size - size*.80), (int)(size - size*.80));
         
-        g.fillArc((int)(x + size * .15), (int)(y + size * .35), (int)(size * .70), (int)(size * .50), 180, 180);
+        g.fillArc((int)(locX + size * .15), (int)(locY + size * .35), (int)(size * .70), (int)(size * .50), 180, 180);
 
     }
 
@@ -87,7 +85,7 @@ public class Smileys extends JFrame {
         System.out.println("X:"+x+"Y:"+y);
     
     }
-
+    // returns a random number within the min and max
     public int randomInRange(int min, int max){
         return (int)(min+ (Math.random()*(max - min + 1)));
     }
